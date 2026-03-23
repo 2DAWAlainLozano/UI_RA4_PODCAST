@@ -9,8 +9,8 @@ const INITIAL_TRACKS: Track[] = [
   {
     id: "track-1",
     number: "01",
-    title: "VALVE PREAMPS",
-    subtitle: "Warmth Obsession Session",
+    title: "Test",
+    subtitle: "Video de YT falta el PODCAST real ",
     duration: "00:54:12",
     peak: "-4.2dB",
     trackType: "Mono Track",
@@ -21,8 +21,8 @@ const INITIAL_TRACKS: Track[] = [
   {
     id: "track-2",
     number: "02",
-    title: "DRUM MACHINES",
-    subtitle: "808 vs The World",
+    title: "NOT Found",
+    subtitle: "Hola",
     duration: "01:12:05",
     peak: "-12.0dB",
     trackType: "Stereo Bus",
@@ -31,8 +31,8 @@ const INITIAL_TRACKS: Track[] = [
   {
     id: "track-3",
     number: "03",
-    title: "STUDIO ACOUSTICS",
-    subtitle: "Diffusion Myths",
+    title: "Not Found",
+    subtitle: "Adios",
     duration: "00:48:30",
     peak: "-6.5dB",
     trackType: "Mono Track",
