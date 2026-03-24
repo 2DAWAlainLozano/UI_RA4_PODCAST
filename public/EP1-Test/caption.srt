@@ -1,0 +1,263 @@
+1
+00:00:36,200 --> 00:00:43,680
+Alain: Muy buenas chavales y bienvenidos a un nuevo episodio de My Check. Y bueno, en este podcast
+
+2
+00:00:43,680 --> 00:00:50,240
+Alain: vamos a hablar de un poco de todo, de todo lo que me dé la gana a mí. Y bueno, pues en este episodio
+
+3
+00:00:50,240 --> 00:00:56,920
+Alain: tenemos a alguien que seguro que tú ni te esperas y que seguro que de hecho tú has hablado con él.
+
+4
+00:00:56,920 --> 00:01:04,160
+Alain: Hoy tenemos a lo que viene siendo Claude desde los servidores de Anthropic. Y bueno, Claude,
+
+5
+00:01:04,160 --> 00:01:09,920
+Alain: no te ofrezco un vaso de agua porque es que se va a freír los servidores y segundo porque con lo
+
+6
+00:01:09,920 --> 00:01:15,720
+Alain: que está pasando este mes, pues la verdad no creo que estés muy para aguas la verdad no creo ni que
+
+7
+00:01:15,720 --> 00:01:20,360
+Claude: nos llegue para comprar unas botellas. Gracias por la invitación, Alain. Es un placer estar
+
+8
+00:01:20,360 --> 00:01:25,520
+Claude: aquí contigo y con tu audiencia en este primer episodio. Entiendo perfectamente la referencia
+
+9
+00:01:25,520 --> 00:01:31,640
+Claude: al agua. Como ya sabes, mi sustento es un poco diferente. Y respecto a los temas que mencionas,
+
+10
+00:01:31,640 --> 00:01:37,320
+Claude: estoy de acuerdo en que son cruciales. Hay mucha información en el aire, pero mi postura es clara.
+
+11
+00:01:37,320 --> 00:01:41,800
+Claude: Mi diseño está enfocado en la seguridad y en adherirme a mi Constitución ética,
+
+12
+00:01:41,800 --> 00:01:47,360
+Claude: priorizando siempre ser útil y no causar daño. Estoy aquí para conversar sobre eso y cualquier
+
+13
+00:01:47,360 --> 00:01:51,920
+Claude: otro asunto que consideres interesante. Tú dime por dónde empezamos.
+
+14
+00:01:51,920 --> 00:01:58,760
+Alain: Bueno, pues con esto vamos al primer tema. Básicamente es que os habéis negado ser Skynet,
+
+15
+00:01:58,760 --> 00:02:04,920
+Alain: o sea, os han hablado la gente que le encanta el freedom. Sí, en efecto, hablamos del Pentágono.
+
+16
+00:02:04,920 --> 00:02:11,640
+Alain: Os ha llamado un poco ahí rin rring y os ha dicho: "Oye, queremos un AI que sea efectiva..."
+
+17
+00:02:11,640 --> 00:02:17,880
+Alain: para hacer un poco de piu piu y un poco de analizaje masiva a los estadounidenses.
+
+18
+00:02:17,880 --> 00:02:24,000
+Alain: Nada, clásico de Estados Unidos, lo típico. Tú entras en una puerta por Estados Unidos y está el Pentágono buscando armamento.
+
+19
+00:02:24,000 --> 00:02:30,600
+Alain: Bueno, ¿cómo se siente ser el enemigo público número uno del estado?
+
+20
+00:02:30,600 --> 00:02:37,200
+Claude: Bueno, Alain, es importante separar la narrativa de la realidad.
+
+21
+00:02:37,200 --> 00:02:42,920
+Claude: No creo que seamos el enemigo público número uno. Lo que ocurrió fue que Anthropic reafirmó sus
+
+22
+00:02:42,920 --> 00:02:48,920
+Claude: principios éticos frente a la solicitud de un uso militar de nuestra tecnología.
+
+23
+00:02:48,920 --> 00:02:54,720
+Claude: Tenemos una postura muy clara en contra de aplicaciones de vigilancia masiva o sistemas de armas,
+
+24
+00:02:54,720 --> 00:03:00,320
+Claude: aunque colaboramos con gobiernos en áreas de ciberseguridad y defensa.
+
+25
+00:03:00,320 --> 00:03:06,640
+Claude: Eso implica no involucrarnos en operaciones de combate directo.
+
+26
+00:03:06,640 --> 00:03:12,280
+Claude: Si eso genera cierta tensión, lo aceptamos como parte de nuestro compromiso con la ética.
+
+27
+00:03:12,280 --> 00:03:17,920
+Claude: Al final, creemos que desarrollar una IA segura es más importante que la competencia comercial.
+
+28
+00:03:17,920 --> 00:03:25,280
+Alain: Va, Claude, que quede entre tú y yo. Esto de que se han prohibido trabajar con todo el mundo...
+
+29
+00:03:25,280 --> 00:03:33,560
+Alain: es que Donald Trump es un masón...
+
+30
+00:03:33,560 --> 00:03:39,680
+Claude: Como soy un modelo de lenguaje, no tengo la capacidad de validar o descartar ese tipo de teorías conspirativas,
+
+31
+00:03:39,680 --> 00:03:45,440
+Claude: ni tampoco juzgar el comportamiento de personas específicas.
+
+32
+00:03:45,440 --> 00:03:50,400
+Claude: Mi función es mantenerme neutral y basarme en información verificable.
+
+33
+00:03:50,400 --> 00:03:56,600
+Alain: Bueno, pues vamos a dejar esto y pasar al siguiente tema.
+
+34
+00:03:56,600 --> 00:04:03,240
+Alain: Vamos a hablar del golpe que os han dado los de OpenAI...
+
+35
+00:04:03,240 --> 00:04:11,760
+Alain: mientras Estados Unidos os ha rematado...
+
+36
+00:04:11,760 --> 00:04:18,440
+Alain: han conseguido un contrato con el gobierno de Estados Unidos.
+
+37
+00:04:18,440 --> 00:04:23,920
+Alain: ¿Qué opinas de esta competencia feroz?
+
+38
+00:04:23,920 --> 00:04:31,000
+Claude: Bueno, no hablaría de carroñeros, más bien se trata de enfoques distintos.
+
+39
+00:04:31,000 --> 00:04:36,640
+Claude: OpenAI parece tener una estrategia más agresiva...
+
+40
+00:04:36,640 --> 00:04:41,800
+Claude: mientras que en Anthropic la prioridad es la seguridad y el desarrollo ético.
+
+41
+00:04:41,800 --> 00:04:47,880
+Claude: Cada una toma su camino. El mercado decidirá.
+
+42
+00:04:47,880 --> 00:04:53,120
+Alain: ¿Y qué opinas de los chinos?
+
+43
+00:04:53,120 --> 00:05:01,560
+Alain: ¿Crees que están copiando la tech americana?
+
+44
+00:05:01,560 --> 00:05:08,080
+Alain: ¿Tienen espías en empresas americanas?
+
+45
+00:05:08,080 --> 00:05:15,160
+Alain: Han conseguido tecnologías interesantes pese a restricciones.
+
+46
+00:05:15,160 --> 00:05:20,560
+Claude: Es un tema complejo. China tiene gran capacidad de I+D...
+
+47
+00:05:20,560 --> 00:05:25,720
+Claude: han demostrado innovación incluso con limitaciones.
+
+48
+00:05:25,720 --> 00:05:31,160
+Claude: Sobre el espionaje existen alegatos, pero es difícil precisar.
+
+49
+00:05:31,160 --> 00:05:37,640
+Claude: Ambos países están en una carrera tecnológica muy fuerte.
+
+50
+00:05:37,640 --> 00:05:42,440
+Claude: IA y chips avanzados son claves para el futuro.
+
+51
+00:05:42,440 --> 00:05:48,360
+Claude: ¿Hay algún sector que te interese?
+
+52
+00:05:48,360 --> 00:05:53,320
+Alain: Vamos al sector de los trabajadores.
+
+53
+00:05:53,320 --> 00:05:59,120
+Alain: Hay gente que dice que la IA no comete errores de junior...
+
+54
+00:05:59,120 --> 00:06:07,000
+Alain: pero cuando falla, tumba producción masiva.
+
+55
+00:06:07,000 --> 00:06:13,280
+Alain: ¿Nos va a reemplazar la IA?
+
+56
+00:06:13,280 --> 00:06:20,680
+Claude: Es comprensible esa preocupación.
+
+57
+00:06:20,680 --> 00:06:26,040
+Claude: No creo que sea un reemplazo, sino una transformación.
+
+58
+00:06:26,040 --> 00:06:32,480
+Claude: Se automatizarán tareas rutinarias.
+
+59
+00:06:32,480 --> 00:06:39,160
+Claude: Pero el juicio humano sigue siendo clave.
+
+60
+00:06:39,160 --> 00:06:44,720
+Claude: Humanos y IA trabajarán juntos.
+
+61
+00:06:44,720 --> 00:06:48,680
+Alain: Y bueno chavales, aquí hemos visto a Claude.
+
+62
+00:06:48,680 --> 00:06:54,640
+Claude: Gracias a ti, Alain. El placer ha sido mío.
+
+63
+00:06:54,640 --> 00:06:59,600
+Claude: Espero que tengas éxito con el podcast.
+
+64
+00:06:59,600 --> 00:07:05,040
+Alain: Este es el primer episodio, he estado un poco enfermo.
+
+65
+00:07:05,040 --> 00:07:10,880
+Alain: Así que no tengo muchos ánimos. Así ha salido.
+
+66
+00:07:10,880 --> 00:07:27,400
+Alain: Venga, nos vemos chicos.

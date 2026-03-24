@@ -9,13 +9,13 @@ const INITIAL_TRACKS: Track[] = [
   {
     id: "track-1",
     number: "01",
-    title: "Test",
-    subtitle: "Video de YT falta el PODCAST real ",
-    duration: "00:54:12",
+    title: "Track AI",
+    subtitle: "El primer EP de Mic Check ",
+    duration: "00:07:27",
     peak: "-4.2dB",
     trackType: "Mono Track",
     activeBoxIndex: 8,
-    videoUrl: "/EP1-Test/NVIDIA RTX 4060 Ti rendimiento de RTX 3070 pero a precio igual, decepción para todos.mp4",
+    videoUrl: "/EP1-Test/EP1.mp4",
     subsUrl: "/EP1-Test/captions.vtt"
   },
   {

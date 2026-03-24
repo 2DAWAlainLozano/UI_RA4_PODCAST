@@ -17,6 +17,7 @@ interface Subtitle {
   start: number;
   end: number;
   text: string;
+  speaker?: string;
 }
 
 const parseVttTime = (timeStr: string) => {
@@ -63,22 +64,48 @@ export default function VideoPlayerSection() {
               const start = parseVttTime(startStr);
               const end = parseVttTime(endStr);
               
-              let textContent = lines.slice(timeLineIndex + 1).join(' ').replace(/<[^>]+>/g, '').trim();
+              let rawText = lines.slice(timeLineIndex + 1).join(' ').trim();
+              let speaker: string | undefined = undefined;
+
+              // Check WebVTT <v Speaker>
+              const vMatch = rawText.match(/<v\s+([^>]+)>(.*?)<\/v>/i) || rawText.match(/<v\s+([^>]+)>(.*)/i);
+              if (vMatch) {
+                speaker = vMatch[1].trim();
+                rawText = vMatch[2].trim();
+              } else {
+                // Check [Speaker]: or [Speaker]
+                const bracketMatch = rawText.match(/^\[([^\]]+)\]:?\s*(.*)/);
+                if (bracketMatch) {
+                  speaker = bracketMatch[1].trim();
+                  rawText = bracketMatch[2].trim();
+                } else {
+                  // Check Speaker: text
+                  const colonMatch = rawText.match(/^([A-Za-zÀ-ÿ0-9 ]{2,20}):\s*(.*)/);
+                  if (colonMatch) {
+                    speaker = colonMatch[1].trim();
+                    rawText = colonMatch[2].trim();
+                  }
+                }
+              }
+
+              let textContent = rawText.replace(/<[^>]+>/g, '').trim();
+
               if (textContent && textContent !== '&nbsp;') {
                 const lastSub = subs[subs.length - 1];
                 
                 // Simple dedup for roll-up captions
-                if (lastSub && textContent.startsWith(lastSub.text)) {
+                if (lastSub && textContent.startsWith(lastSub.text) && lastSub.speaker === speaker) {
                    lastSub.end = end;
                    lastSub.text = textContent;
-                } else if (lastSub && lastSub.text.startsWith(textContent)) {
+                } else if (lastSub && lastSub.text.startsWith(textContent) && lastSub.speaker === speaker) {
                    // Skip if it's a prefix of existing
                 } else if (textContent !== lastSub?.text) {
                    subs.push({
                      id: idCount++,
                      start,
                      end,
-                     text: textContent
+                     text: textContent,
+                     speaker
                    });
                 }
               }
@@ -194,13 +221,14 @@ export default function VideoPlayerSection() {
       </div>
 
       {/* Script / Subtitles Area */}
-      <div className="md:col-span-4 bg-surface-container-low p-8 flex flex-col border-l border-outline-variant/10 h-[500px]">
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant/10">
-          <h3 className="font-headline text-xl font-bold uppercase tracking-widest text-primary">Transcript</h3>
-          <span className="material-symbols-outlined text-on-surface-variant">description</span>
-        </div>
-        
-        <div className="flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar flex-1 font-mono text-sm scroll-smooth">
+      <div className="md:col-span-4 bg-surface-container-low border-l border-outline-variant/10 relative min-h-[400px] md:min-h-0">
+        <div className="absolute inset-0 p-8 flex flex-col">
+          <div className="flex items-center justify-between mb-6 pb-4 shrink-0 border-b border-outline-variant/10">
+            <h3 className="font-headline text-xl font-bold uppercase tracking-widest text-primary">Transcript</h3>
+            <span className="material-symbols-outlined text-on-surface-variant">description</span>
+          </div>
+          
+          <div className="flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar flex-1 font-mono text-sm scroll-smooth pb-4">
           {subtitles.length > 0 ? (
             subtitles.map((sub, index) => {
               const isActive = (currentTime >= sub.start && currentTime <= sub.end) || activeSubIndex === index;
@@ -221,7 +249,14 @@ export default function VideoPlayerSection() {
                   <span className={`${isActive ? 'text-primary font-bold' : 'text-primary/60'} min-w-[50px] shrink-0`}>
                     {formatTime(sub.start)}
                   </span>
-                  <p>{sub.text}</p>
+                  <div className="flex-1">
+                    {sub.speaker && (
+                      <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary mb-1 border border-primary/20">
+                        {sub.speaker}
+                      </span>
+                    )}
+                    <p className={`${sub.speaker ? "mt-0.5" : ""} font-medium`}>{sub.text}</p>
+                  </div>
                 </div>
               );
             })
@@ -230,6 +265,7 @@ export default function VideoPlayerSection() {
               {currentTrack ? "Cargando transcripción..." : "Selecciona una sesión para ver la transcripción"}
             </div>
           )}
+        </div>
         </div>
       </div>
     </section>
