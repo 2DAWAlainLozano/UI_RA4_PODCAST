@@ -163,13 +163,26 @@ export default function VideoPlayerSection() {
           {currentTrack?.videoUrl ? (
             <video 
               ref={videoRef}
-              src={currentTrack.videoUrl}
+              key={currentTrack.videoUrl}
               className="w-full h-full object-cover"
               onClick={togglePlay}
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onEnded={() => usePlayerStore.getState().setPlaying(false)}
+              onError={(e) => {
+                const videoTarget = e.target as HTMLVideoElement;
+                console.error("Video Error Details:", {
+                  error: videoTarget.error,
+                  networkState: videoTarget.networkState,
+                  readyState: videoTarget.readyState,
+                  currentSrc: videoTarget.currentSrc
+                });
+              }}
+              playsInline
+              preload="metadata"
+              crossOrigin="anonymous"
             >
+              <source src={currentTrack.videoUrl} type="video/mp4" />
               {currentTrack.subsUrl && <track kind="captions" src={currentTrack.subsUrl} srcLang="es" default />}
             </video>
           ) : (
