@@ -1,1 +1,1 @@
-public/EP1-Test/EP1.mp4 filter=lfs diff=lfs merge=lfs -text
+# No LFS filters
