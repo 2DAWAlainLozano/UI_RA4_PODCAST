@@ -170,12 +170,16 @@ export default function VideoPlayerSection() {
               onLoadedMetadata={handleLoadedMetadata}
               onEnded={() => usePlayerStore.getState().setPlaying(false)}
               onError={(e) => {
-                const videoTarget = e.target as HTMLVideoElement;
+                const videoTarget = e.currentTarget;
                 console.error("Video Error Details:", {
-                  error: videoTarget.error,
+                  error: videoTarget.error ? {
+                    code: videoTarget.error.code,
+                    message: videoTarget.error.message
+                  } : "No specific error object",
                   networkState: videoTarget.networkState,
                   readyState: videoTarget.readyState,
-                  currentSrc: videoTarget.currentSrc
+                  currentSrc: videoTarget.currentSrc || currentTrack.videoUrl,
+                  videoUrlInStore: currentTrack.videoUrl
                 });
               }}
               playsInline
