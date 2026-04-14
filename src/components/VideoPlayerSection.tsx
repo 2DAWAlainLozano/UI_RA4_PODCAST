@@ -155,11 +155,16 @@ export default function VideoPlayerSection() {
   // Using findIndex reversed or standard allows mapping
   const activeSubIndex = subtitles.findIndex(sub => currentTime >= sub.start && currentTime <= sub.end);
 
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-12 gap-0 border-b border-outline-variant/10">
+    <section className="grid grid-cols-1 md:grid-cols-12 gap-0 border-b border-outline-variant/10" aria-label="Reproductor de video y transcripción">
       {/* Video Player Area */}
       <div className="md:col-span-8 p-8 flex flex-col justify-center bg-surface-container-lowest">
-        <div className="w-full aspect-video bg-black rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden group">
+        <div 
+          className="w-full aspect-video bg-black rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden group"
+          role="region"
+          aria-label="Reproductor de video"
+        >
           {currentTrack?.videoUrl ? (
             <video 
               ref={videoRef}
@@ -187,10 +192,17 @@ export default function VideoPlayerSection() {
               crossOrigin="anonymous"
             >
               <source src={currentTrack.videoUrl} type="video/mp4" />
-              {currentTrack.subsUrl && <track kind="captions" src={currentTrack.subsUrl} srcLang="es" default />}
+              {currentTrack.subsUrl && <track kind="captions" src={currentTrack.subsUrl} srcLang="es" default label="Español" />}
             </video>
           ) : (
-            <div className="cursor-pointer" onClick={() => { if (currentTrack) togglePlay(); }}>
+            <div 
+              className="cursor-pointer" 
+              onClick={() => { if (currentTrack) togglePlay(); }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { if (currentTrack) togglePlay(); } }}
+              aria-label="Cargar video"
+            >
               <div className="text-white/40 font-mono text-sm tracking-widest uppercase text-center">
                 NO SOURCE LOADED<br />
                 <span className="text-[10px] opacity-60">SELECT A SESSION BELOW</span>
@@ -201,16 +213,28 @@ export default function VideoPlayerSection() {
           {!isPlaying && currentTrack?.videoUrl && (
             <button 
               onClick={togglePlay}
-              className="w-20 h-20 bg-surface-container-highest/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-[0_8px_16px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-on-primary hover:scale-105 transition-all absolute"
+              aria-label="Reproducir video"
+              className="w-20 h-20 bg-surface-container-highest/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-[0_8px_16px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-on-primary hover:scale-105 transition-all absolute z-10"
             >
-              <span className="material-symbols-outlined text-4xl" style={{fontVariationSettings: "'FILL' 1"}}>play_arrow</span>
+              <span className="material-symbols-outlined text-4xl" style={{fontVariationSettings: "'FILL' 1"}} aria-hidden="true">play_arrow</span>
             </button>
           )}
 
           {/* Player Controls */}
-          <div className="absolute left-0 bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute left-0 bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity z-20">
             <div 
               className="w-full h-1 bg-white/20 rounded-full overflow-hidden cursor-pointer relative"
+              role="slider"
+              aria-label="Progreso del video"
+              aria-valuemin={0}
+              aria-valuemax={duration}
+              aria-valuenow={currentTime}
+              aria-valuetext={`${formatTime(currentTime)} de ${formatTime(duration)}`}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight') seekTo(Math.min(duration, currentTime + 5));
+                if (e.key === 'ArrowLeft') seekTo(Math.max(0, currentTime - 5));
+              }}
               onClick={(e) => {
                 if (videoRef.current && duration > 0) {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -226,11 +250,17 @@ export default function VideoPlayerSection() {
               ></div>
             </div>
             <div className="flex justify-between items-center text-xs font-mono text-white/70">
-              <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
+              <span aria-live="polite">{formatTime(currentTime)} / {formatTime(duration)}</span>
               <div className="flex gap-4">
-                <span className="material-symbols-outlined text-sm cursor-pointer hover:text-white">volume_up</span>
-                <span className="material-symbols-outlined text-sm cursor-pointer hover:text-white">settings</span>
-                <span className="material-symbols-outlined text-sm cursor-pointer hover:text-white">fullscreen</span>
+                <button aria-label="Volumen" className="hover:text-white flex items-center">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">volume_up</span>
+                </button>
+                <button aria-label="Configuración" className="hover:text-white flex items-center">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">settings</span>
+                </button>
+                <button aria-label="Pantalla completa" className="hover:text-white flex items-center">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">fullscreen</span>
+                </button>
               </div>
             </div>
           </div>
@@ -241,20 +271,25 @@ export default function VideoPlayerSection() {
       <div className="md:col-span-4 bg-surface-container-low border-l border-outline-variant/10 relative min-h-[400px] md:min-h-0">
         <div className="absolute inset-0 p-8 flex flex-col">
           <div className="flex items-center justify-between mb-6 pb-4 shrink-0 border-b border-outline-variant/10">
-            <h3 className="font-headline text-xl font-bold uppercase tracking-widest text-primary">Transcript</h3>
-            <span className="material-symbols-outlined text-on-surface-variant">description</span>
+            <h2 className="font-headline text-xl font-bold uppercase tracking-widest text-primary">Transcript</h2>
+            <span className="material-symbols-outlined text-on-surface-variant" aria-hidden="true">description</span>
           </div>
           
-          <div className="flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar flex-1 font-mono text-sm scroll-smooth pb-4">
+          <div 
+            className="flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar flex-1 font-mono text-sm scroll-smooth pb-4"
+            role="log"
+            aria-label="Transcripción del video"
+            aria-live="polite"
+          >
           {subtitles.length > 0 ? (
             subtitles.map((sub, index) => {
               const isActive = (currentTime >= sub.start && currentTime <= sub.end) || activeSubIndex === index;
               const isPast = currentTime > sub.end;
 
               return (
-                <div 
+                <button 
                   key={sub.id} 
-                  className={`flex gap-4 cursor-pointer transition-colors ${
+                  className={`flex gap-4 cursor-pointer transition-colors text-left w-full ${
                     isActive 
                       ? 'text-on-surface bg-primary/10 p-3 rounded-r border-l-2 border-primary -ml-3' 
                       : isPast
@@ -262,6 +297,7 @@ export default function VideoPlayerSection() {
                         : 'text-on-surface-variant hover:text-on-surface'
                   }`}
                   onClick={() => seekTo(sub.start)}
+                  aria-pressed={isActive}
                 >
                   <span className={`${isActive ? 'text-primary font-bold' : 'text-primary/60'} min-w-[50px] shrink-0`}>
                     {formatTime(sub.start)}
@@ -274,7 +310,7 @@ export default function VideoPlayerSection() {
                     )}
                     <p className={`${sub.speaker ? "mt-0.5" : ""} font-medium`}>{sub.text}</p>
                   </div>
-                </div>
+                </button>
               );
             })
           ) : (

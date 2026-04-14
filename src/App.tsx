@@ -1,8 +1,11 @@
+import Header from './components/Header';
+import Footer from './components/Footer';
 import HeroSection from './components/HeroSection';
 import VideoPlayerSection from './components/VideoPlayerSection';
 import NowPlayingSection from './components/NowPlayingSection';
 import ConsoleSection from './components/ConsoleSection';
 import HardwareManifest from './components/HardwareManifest';
+import ContactSection from './components/ContactSection';
 import type { Track } from './store/playerStore';
 
 const INITIAL_TRACKS: Track[] = [
@@ -42,13 +45,28 @@ const INITIAL_TRACKS: Track[] = [
 
 function App() {
   return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <VideoPlayerSection />
-      <NowPlayingSection />
-      <ConsoleSection tracks={INITIAL_TRACKS} />
-      <HardwareManifest />
-    </main>
+    <div className="min-h-screen bg-background">
+      <a href="#main-content" className="skip-to-content">
+        Saltar al contenido
+      </a>
+      
+      <Header />
+      
+      <main id="main-content" className="relative focus:outline-none" tabIndex={-1}>
+        <HeroSection />
+        <VideoPlayerSection />
+        <NowPlayingSection />
+        <div id="episodes">
+          <ConsoleSection tracks={INITIAL_TRACKS} />
+        </div>
+        <div id="gear">
+          <HardwareManifest />
+        </div>
+        <ContactSection />
+      </main>
+
+      <Footer />
+    </div>
   );
 }
 
